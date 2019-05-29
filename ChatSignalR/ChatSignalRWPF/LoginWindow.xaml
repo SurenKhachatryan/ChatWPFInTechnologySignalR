@@ -27,7 +27,7 @@
         <WrapPanel Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="2">
             <Label Content="Sign In To InLine Chat" Margin="0,0,0,10" HorizontalContentAlignment="Center" Foreground="#FFF5D4AC" FontFamily="Sylfaen" FontSize="20" FontWeight="Bold" Width="225"/>
             <TextBox Height="30" TextWrapping="Wrap" Margin="0,0,0,15" FontSize="16" FontFamily="Sylfaen" FontWeight="Bold"  Background="#FFE8C2C2"  Width="224"/>
-            <TextBox Height="30" TextWrapping="Wrap" FontFamily="Sylfaen" FontSize="16" FontWeight="Bold" VerticalContentAlignment="Center" Background="#FFE8C2C2" Width="224"/>
+            <TextBox Height="30" TextWrapping="Wrap" FontFamily="Sylfaen" FontSize="16" FontWeight="Bold" Background="#FFE8C2C2" Width="224"/>
             <Label Content="Forgot account?" FontFamily="Sylfaen" Margin="0,0,24,0" FontSize="18" FontWeight="Bold" Width="137" Foreground="#FF00AEFF" Cursor="Hand"/>
             <Label Content="Sign in" Cursor="Hand" FontFamily="Sylfaen" FontSize="18" FontWeight="Bold" Foreground="#FFF98787"/>
             <Label Content="Sign Up Now" Margin="0,15,0,0" FontFamily="Sylfaen" FontSize="18" HorizontalContentAlignment="Center" FontWeight="Bold" HorizontalAlignment="Left" Width="225" Foreground="#FF46FF00" Cursor="Hand"/>

@@ -29,6 +29,7 @@ namespace ChatSignalRWPF
             connection = new HubConnectionBuilder()
                 .WithUrl("http://localhost:56701/ChatHub")
                 .Build();
+            new LoginWindow().Show();
 
             #region snippet_ClosedRestart
             connection.Closed += async (error) =>
@@ -41,6 +42,7 @@ namespace ChatSignalRWPF
 
         private async void connectButton_Click(object sender, RoutedEventArgs e)
         {
+          
             #region snippet_ConnectionOn
             connection.On<string, string>("ReceiveMessage", (user, message) =>
             {

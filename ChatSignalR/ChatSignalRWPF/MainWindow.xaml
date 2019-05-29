@@ -6,6 +6,10 @@
         xmlns:local="clr-namespace:ChatSignalRWPF"
         mc:Ignorable="d"
               Title="SignalR Chat WPF Client" Height="436" Width="782">
+    <Window.Background>
+        <ImageBrush ImageSource="pack://siteoforigin:,,,/Resources/WindowBackGround.jpg"/>
+    </Window.Background>
+
     <Grid Margin="0,0,193.333,50.667">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="109*"/>

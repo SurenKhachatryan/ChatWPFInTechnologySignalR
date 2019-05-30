@@ -39,14 +39,34 @@ namespace ChatSignalRWPF
 
         }
 
-        private void Label_MouseLeftButtonUp_Forgot_account(object sender, MouseButtonEventArgs e)
+        private void Label_Forgot_account_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
 
         }
 
-        private void Label_MouseLeftButtonUp_Sign_Up_Now(object sender, MouseButtonEventArgs e)
+        private void Label_Sign_Up_NowMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
 
+        }
+
+        private void Label_Gorgot_Account_MouseEnter(object sender, MouseEventArgs e)
+        {
+            LabelGorgotAccount.Foreground = (Brush)new BrushConverter().ConvertFrom("#FF81D6FD");
+        }
+
+        private void Label_Gorgot_Account_MouseLeave(object sender, MouseEventArgs e)
+        {
+            LabelGorgotAccount.Foreground = (Brush)new BrushConverter().ConvertFrom("#FF00AEFF");
+        }
+
+        private void Label_Sign_Up_Now_MouseEnter(object sender, MouseEventArgs e)
+        {
+            LabelSignUpNow.Foreground = (Brush)new BrushConverter().ConvertFrom("#FFBCFBA4");
+        }
+
+        private void Label_Sign_Up_Now_MouseLeave(object sender, MouseEventArgs e)
+        {
+            LabelSignUpNow.Foreground = (Brush)new BrushConverter().ConvertFrom("#FF46FF00");
         }
     }
 }

@@ -5,6 +5,41 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ChatSignalRWPF"
         mc:Ignorable="d"
-        Title="SignUpWindow" Height="450" Width="800">
-   
+        Title="SignUpWindow" Height="529" Width="262" MaxWidth="262" MaxHeight="529" WindowStyle="None" WindowStartupLocation="CenterScreen" BorderThickness="2" AllowsTransparency="True">
+    <Window.Background>
+        <ImageBrush ImageSource="pack://siteoforigin:,,,/Resources/WindowBackGround.jpg" Stretch="UniformToFill"/>
+    </Window.Background>
+    <Grid>
+        <WrapPanel Margin="17,41,17,0" Height="460" VerticalAlignment="Top">
+            <Label Content="Create new Account" Margin="0,0,0,10" HorizontalContentAlignment="Center" Foreground="#FFF5D4AC" FontFamily="Sylfaen" FontSize="20" FontWeight="Bold" Width="225"/>
+            <Label Name="LabelSignUpNow" Content="First Name *" FontFamily="Sylfaen" FontSize="14" FontWeight="Bold" Foreground="#FF46FF00" Cursor="Hand" VerticalContentAlignment="Center" HorizontalAlignment="Left" Width="85" Height="26" VerticalAlignment="Top"/>
+            <TextBox Name="TextBoxLogin" Height="30" TextWrapping="Wrap" FontSize="16" FontFamily="Sylfaen" FontWeight="Bold"  Background="#FFE8C2C2"  Width="224" VerticalContentAlignment="Center" Panel.ZIndex="1"/>
+            <Label Name="LabelSignUpNo" Content="Last Name *" FontFamily="Sylfaen" FontSize="14" FontWeight="Bold" HorizontalAlignment="Left" Foreground="#FF46FF00" Cursor="Hand" VerticalContentAlignment="Center" Width="85" Height="26" VerticalAlignment="Top"/>
+            <TextBox Name="TextBoxLogi" Height="30" TextWrapping="Wrap" FontSize="16" FontFamily="Sylfaen" FontWeight="Bold"  Background="#FFE8C2C2"  Width="224" VerticalContentAlignment="Center" Panel.ZIndex="2"/>
+            <Label Name="LabelSignUpN" Content="Email *" FontFamily="Sylfaen" FontSize="14" FontWeight="Bold" HorizontalAlignment="Left" Foreground="#FF46FF00" Cursor="Hand" VerticalContentAlignment="Center" Width="85" Height="26" VerticalAlignment="Top"/>
+            <TextBox Name="TextBoxLog" Height="30" TextWrapping="Wrap" FontSize="16" FontFamily="Sylfaen" FontWeight="Bold"  Background="#FFE8C2C2"  Width="224" VerticalContentAlignment="Center" Panel.ZIndex="3"/>
+            <Label Name="LabelSignUp" Content="New Password *" FontFamily="Sylfaen" FontSize="14" FontWeight="Bold" HorizontalAlignment="Left" Foreground="#FF46FF00" Cursor="Hand" VerticalContentAlignment="Center" Width="107" Height="26"/>
+            <PasswordBox Name="TextBoxLo" Height="30" FontSize="16" FontFamily="Sylfaen" FontWeight="Bold"  Background="#FFE8C2C2"  Width="224" VerticalContentAlignment="Center" Panel.ZIndex="4"/>
+            <Label Name="LabelSignU" Content="Confirm New Password *" FontFamily="Sylfaen" FontSize="14" FontWeight="Bold" HorizontalAlignment="Left" Foreground="#FF46FF00" Cursor="Hand" VerticalContentAlignment="Center" Width="165" Height="26" VerticalAlignment="Top"/>
+            <PasswordBox Name="TextBoxL" Height="30" FontSize="16" FontFamily="Sylfaen" FontWeight="Bold"  Background="#FFE8C2C2"  Width="224" VerticalContentAlignment="Center" Panel.ZIndex="5"/>
+            <Label Name="Paul" Content="Paul *" FontFamily="Sylfaen" FontSize="14" FontWeight="Bold" HorizontalAlignment="Left" Foreground="#FF46FF00" Cursor="Hand" VerticalContentAlignment="Center" Width="223" Height="26" VerticalAlignment="Top"/>
+            <RadioButton Content="Male" FontWeight="Bold" Margin="0,0,15,0" Name="RadioButtonMale" Foreground="#FF46FF00"  IsChecked="True" Panel.ZIndex="6" />
+            <RadioButton Content="Female"  Name="RadioButtonFeMale" FontWeight="Bold" Foreground="#FF46FF00" Panel.ZIndex="7"/>
+            <Label Name="Birthday" Content="Birthday *" FontFamily="Sylfaen" FontSize="14" FontWeight="Bold" HorizontalAlignment="Left" Foreground="#FF46FF00" Cursor="Hand" VerticalContentAlignment="Center" Width="223" Height="26" VerticalAlignment="Top"/>
+            <DatePicker HorizontalAlignment="Left" Margin="0,0,0,7" VerticalAlignment="Top" Width="223" FontSize="16" Background="#FFE8C2C2" Panel.ZIndex="8" />
+            <Button Content="Sign" Cursor="Hand" Margin="145,0,0,0" FontFamily="Sylfaen" FontSize="18" FontWeight="Bold" Foreground="#FFF98787" Height="30" Width="79" Panel.ZIndex="9"/>
+        </WrapPanel>
+        <WrapPanel Margin="187,2,0,0" HorizontalAlignment="Left" Width="69" Height="32" VerticalAlignment="Top" >
+            <Rectangle Name="RectangleMinimize" Height="31" Width="33" Cursor="Hand" Margin="0,0,2,0">
+                <Rectangle.Fill>
+                    <ImageBrush ImageSource="pack://siteoforigin:,,,/Resources/Minimize.png"/>
+                </Rectangle.Fill>
+            </Rectangle>
+            <Rectangle Name="RactangleClose" Height="31" Width="33" Cursor="Hand">
+                <Rectangle.Fill>
+                    <ImageBrush ImageSource="pack://siteoforigin:,,,/Resources/Close.png"/>
+                </Rectangle.Fill>
+            </Rectangle>
+        </WrapPanel>
+    </Grid>
 </Window>

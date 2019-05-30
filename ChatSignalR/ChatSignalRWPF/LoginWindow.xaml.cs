@@ -23,5 +23,30 @@ namespace ChatSignalRWPF
         {
             InitializeComponent();
         }
+
+        private void Rectangle_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void Rectangle_MouseLeftButtonUp_1(object sender, MouseButtonEventArgs e)
+        {
+            WindowState = WindowState.Minimized;
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Label_MouseLeftButtonUp_Forgot_account(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void Label_MouseLeftButtonUp_Sign_Up_Now(object sender, MouseButtonEventArgs e)
+        {
+
+        }
     }
 }

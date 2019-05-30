@@ -26,20 +26,20 @@
         </Grid.ColumnDefinitions>
         <WrapPanel Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="2">
             <Label Content="Sign In To InLine Chat" Margin="0,0,0,10" HorizontalContentAlignment="Center" Foreground="#FFF5D4AC" FontFamily="Sylfaen" FontSize="20" FontWeight="Bold" Width="225"/>
-            <TextBox Height="30" TextWrapping="Wrap" Margin="0,0,0,15" FontSize="16" FontFamily="Sylfaen" FontWeight="Bold"  Background="#FFE8C2C2"  Width="224"/>
-            <TextBox Height="30" TextWrapping="Wrap" FontFamily="Sylfaen" FontSize="16" FontWeight="Bold" Background="#FFE8C2C2" Width="224"/>
-            <Label Content="Forgot account?" FontFamily="Sylfaen" Margin="0,0,24,0" FontSize="18" FontWeight="Bold" Width="137" Foreground="#FF00AEFF" Cursor="Hand"/>
-            <Label Content="Sign in" Cursor="Hand" FontFamily="Sylfaen" FontSize="18" FontWeight="Bold" Foreground="#FFF98787"/>
-            <Label Content="Sign Up Now" Margin="0,15,0,0" FontFamily="Sylfaen" FontSize="18" HorizontalContentAlignment="Center" FontWeight="Bold" HorizontalAlignment="Left" Width="225" Foreground="#FF46FF00" Cursor="Hand"/>
+            <TextBox Name="TextBoxLogin" Height="30" TextWrapping="Wrap" Margin="0,0,0,15" FontSize="16" FontFamily="Sylfaen" FontWeight="Bold"  Background="#FFE8C2C2"  Width="224" VerticalContentAlignment="Center" Panel.ZIndex="1"/>
+            <PasswordBox Name="PasswordBoxPass" Height="30" Margin="0,0,0,5"  FontFamily="Sylfaen" FontSize="16" FontWeight="Bold" Background="#FFE8C2C2" Width="224" VerticalContentAlignment="Center" Panel.ZIndex="2"/>
+            <Label Content="Forgot account?" FontFamily="Sylfaen" Margin="0,0,21.2,0" FontSize="18" FontWeight="Bold" Width="137" Foreground="#FF00AEFF" Cursor="Hand" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Panel.ZIndex="5" MouseLeftButtonUp="Label_MouseLeftButtonUp_Forgot_account"/>
+            <Button Content="Sign in" Cursor="Hand" FontFamily="Sylfaen" FontSize="18" FontWeight="Bold" Foreground="#FFF98787" Height="30" Width="66" Panel.ZIndex="3" Click="Button_Click"/>
+            <Label Content="Sign Up Now" Margin="0,15,0,0" FontFamily="Sylfaen" FontSize="18" HorizontalContentAlignment="Center" FontWeight="Bold" HorizontalAlignment="Left" Width="225" Foreground="#FF46FF00" Cursor="Hand" VerticalContentAlignment="Center" Panel.ZIndex="4" MouseLeftButtonUp="Label_MouseLeftButtonUp_Sign_Up_Now"/>
         </WrapPanel>
 
-        <WrapPanel Grid.ColumnSpan="2" Grid.Column="2" Grid.Row="1">
-            <Rectangle Height="31" Width="33" Cursor="Hand">
+        <WrapPanel Grid.ColumnSpan="2" Grid.Column="2" Grid.Row="1" >
+            <Rectangle Height="31" Width="33" Cursor="Hand" Margin="0,0,2,0" MouseLeftButtonUp="Rectangle_MouseLeftButtonUp_1">
                 <Rectangle.Fill>
                     <ImageBrush ImageSource="pack://siteoforigin:,,,/Resources/Minimize.png"/>
                 </Rectangle.Fill>
             </Rectangle>
-            <Rectangle Height="31" Width="33" Cursor="Hand">
+            <Rectangle Height="31" Width="33" Cursor="Hand" MouseLeftButtonUp="Rectangle_MouseLeftButtonUp">
                 <Rectangle.Fill>
                     <ImageBrush ImageSource="pack://siteoforigin:,,,/Resources/Close.png"/>
                 </Rectangle.Fill>

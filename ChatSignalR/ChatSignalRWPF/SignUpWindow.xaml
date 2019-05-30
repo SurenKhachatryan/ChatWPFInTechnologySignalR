@@ -6,7 +6,5 @@
         xmlns:local="clr-namespace:ChatSignalRWPF"
         mc:Ignorable="d"
         Title="SignUpWindow" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+   
 </Window>

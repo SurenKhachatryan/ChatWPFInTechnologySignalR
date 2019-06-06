@@ -22,7 +22,9 @@ namespace DAL.Models
         public DateTime LastUpdateDate { get; set; }
         public DateTime CreationDate { get; set; }
         public DateTime BirthDate { get; set; }
+        public int? RoleId { get; set; }
 
+        public virtual Role Role { get; set; }
         public virtual ICollection<UserSession> UserSession { get; set; }
     }
 }

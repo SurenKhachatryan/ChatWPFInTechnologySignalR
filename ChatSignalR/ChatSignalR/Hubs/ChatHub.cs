@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace ChatSignalR.Hubs
+namespace ChatWebApi.Hubs
 {
     public class ChatHub : Hub
     {

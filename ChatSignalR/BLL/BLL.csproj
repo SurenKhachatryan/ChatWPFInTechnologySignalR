@@ -5,7 +5,14 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Services\" />
+    <Folder Include="Services\UserServices\" />
+    <Folder Include="Services\PermissionRoleServices\" />
+    <Folder Include="Services\ErrorServices\" />
+    <Folder Include="Constatns\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.2.4" />
   </ItemGroup>
 
 </Project>

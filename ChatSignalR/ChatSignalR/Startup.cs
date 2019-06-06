@@ -1,10 +1,10 @@
-﻿using ChatSignalR.Hubs;
+﻿using ChatWebApi.Hubs;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace ChatSignalR
+namespace ChatWebApi
 {
     public class Startup
     {

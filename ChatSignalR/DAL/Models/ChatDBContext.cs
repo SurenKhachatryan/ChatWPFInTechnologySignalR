@@ -15,6 +15,7 @@ namespace DAL.Models
         {
         }
 
+        public virtual DbSet<AppSettings> AppSettings { get; set; }
         public virtual DbSet<Error> Error { get; set; }
         public virtual DbSet<Permission> Permission { get; set; }
         public virtual DbSet<Role> Role { get; set; }
@@ -33,6 +34,19 @@ namespace DAL.Models
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.HasAnnotation("ProductVersion", "2.2.4-servicing-10062");
+
+            modelBuilder.Entity<AppSettings>(entity =>
+            {
+                entity.HasIndex(e => e.Name)
+                    .HasName("UQ__AppSetti__737584F681303715")
+                    .IsUnique();
+
+                entity.Property(e => e.Name)
+                    .IsRequired()
+                    .HasMaxLength(200);
+
+                entity.Property(e => e.Value).IsRequired();
+            });
 
             modelBuilder.Entity<Error>(entity =>
             {

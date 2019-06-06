@@ -2,10 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace BLL.Mappers.UserMappers
+namespace BLL.Mappers.ErrorMappers
 {
-    interface IUserMappers
+    interface IErrorMappers
     {
-       
     }
 }

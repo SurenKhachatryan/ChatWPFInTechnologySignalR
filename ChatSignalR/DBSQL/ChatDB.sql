@@ -58,3 +58,9 @@ ModificationDate Date Not Null,
 UserId int references [User](Id) on Delete Cascade
 );
 
+Create Table AppSettings
+(
+Id int identity Primary Key,
+[Name] nvarchar(200) Unique not null,
+[Value] nvarchar(max) not null
+);

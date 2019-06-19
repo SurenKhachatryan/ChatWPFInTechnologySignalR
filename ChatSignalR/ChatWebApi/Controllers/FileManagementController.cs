@@ -3,32 +3,52 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using BLL.DomainModels;
+using BLL.Services.FileManagmentServices;
 using DTO.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ChatWebApi.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/FileManagement")]
     [ApiController]
     public class FileManagementController : ControllerBase
     {
-        [HttpPost]
-        public async Task<bool> UploadFile(FileRequest file)
-        {
+        public IFileManagmentServices _fileManagmentServices;
+        public IFileServices _fileServices;
 
-            await Task.CompletedTask;
-            return true;
+        public FileManagementController(IFileManagmentServices fileManagmentServices, IFileServices fileServices)
+        {
+            _fileManagmentServices = fileManagmentServices;
+            _fileServices = fileServices;
         }
 
         [HttpPost]
-        public async Task<bool> UploadFiles(FilesRequest files)
+        [Route("UploadFile")]
+        public async Task<ResponseDto<bool>> UploadFile(FileRequest file)
         {
 
             await Task.CompletedTask;
-            return true;
+            return new ResponseDto<bool>()
+            {
+                Data = true
+            };
         }
 
+        [HttpPost]
+        [Route("UploadFiles")]
+        public async Task<ResponseDto<bool>> UploadFiles(FilesRequest files)
+        {
+
+            await Task.CompletedTask;
+            return new ResponseDto<bool>()
+            {
+                Data = true
+            };
+        }
+
+        [HttpPost]
+        [Route("DeleteFiles")]
         public async Task<ResponseDto<bool>> DeleteFiles(BaseFileInfo file)
         {
 
@@ -36,7 +56,7 @@ namespace ChatWebApi.Controllers
             return new ResponseDto<bool>
             {
                 Data = true
-        };
+            };
+        }
     }
-}
 }

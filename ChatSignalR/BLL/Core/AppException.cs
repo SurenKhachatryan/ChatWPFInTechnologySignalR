@@ -5,7 +5,7 @@ using System.Text;
 
 namespace BLL.Core
 {
-    class AppException
+    public class AppException : Exception
     {
         private readonly string _cachUrl = AppConfigSettings.CacheUrl;
         public List<ErrorModel> Errors { get; private set; } = new List<ErrorModel>();
@@ -31,6 +31,10 @@ namespace BLL.Core
         public AppException(List<ErrorModel> errors)
         {
             CreatError(errors);
+        }
+
+        public AppException()
+        {
         }
 
 

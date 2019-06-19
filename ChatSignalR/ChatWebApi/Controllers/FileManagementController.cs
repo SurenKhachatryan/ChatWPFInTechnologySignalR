@@ -25,10 +25,10 @@ namespace ChatWebApi.Controllers
 
         [HttpPost]
         [Route("UploadFile")]
-        public async Task<ResponseDto<bool>> UploadFile(FileRequest file)
+        public async Task<ResponseDto<bool>> UploadFile([FromForm] FileRequest file)
         {
-
-            await Task.CompletedTask;
+            await _fileServices.UploadFile(file);
+            
             return new ResponseDto<bool>()
             {
                 Data = true

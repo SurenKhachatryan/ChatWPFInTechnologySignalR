@@ -31,7 +31,7 @@ namespace ChatWebApi
         {
             app.UseSignalR(routes =>
             {
-                routes.MapHub<ChatHub>("/chathub");
+                routes.MapHub<NotificationHub>("/chathub");
             });
             app.UseMvc();
         }

@@ -27,9 +27,9 @@ namespace ChatSignalRWPF
             InitializeComponent();
 
             connection = new HubConnectionBuilder()
-                .WithUrl("http://localhost:56701/ChatHub")
+                .WithUrl("http://localhost:6000/ChatHub")
                 .Build();
-            new SignUpWindow().Show();
+            //new SignUpWindow().Show();
 
             #region snippet_ClosedRestart
             connection.Closed += async (error) =>

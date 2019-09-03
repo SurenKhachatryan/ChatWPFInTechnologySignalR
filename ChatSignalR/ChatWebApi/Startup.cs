@@ -10,6 +10,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using BLL.Services;
 using BLL.Services.FileManagmentServices;
+using BLL.Core;
+using BLL.Services.UserServices;
+using DAL.Models;
 
 namespace ChatWebApi
 {
@@ -23,6 +26,9 @@ namespace ChatWebApi
 
             services.AddTransient<IFileServices, FileServices>();
             services.AddTransient<IFileManagmentServices, FileManagmentServices>();
+            services.AddSingleton<UserIdentity>();
+            services.AddTransient<IUserService, UserService>();
+            services.AddDbContext<ChatDBContext>();
 
             services.AddSignalR();
         }
@@ -31,7 +37,7 @@ namespace ChatWebApi
         {
             app.UseSignalR(routes =>
             {
-                routes.MapHub<NotificationHub>("/chathub");
+                routes.MapHub<NotificationHub>("/NotificationHub");
             });
             app.UseMvc();
         }

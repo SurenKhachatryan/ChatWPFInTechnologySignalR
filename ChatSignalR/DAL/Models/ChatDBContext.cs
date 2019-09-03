@@ -27,6 +27,7 @@ namespace DAL.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
                 optionsBuilder.UseSqlServer("Data Source=DESKTOP-2F3RP54;Initial Catalog=ChatDB;User ID=Suren;Password=************");
             }
         }
@@ -38,12 +39,12 @@ namespace DAL.Models
             modelBuilder.Entity<AppSettings>(entity =>
             {
                 entity.HasIndex(e => e.Name)
-                    .HasName("UQ__AppSetti__737584F681303715")
+                    .HasName("UQ__AppSetti__737584F63F36B155")
                     .IsUnique();
 
                 entity.Property(e => e.Name)
                     .IsRequired()
-                    .HasMaxLength(200);
+                    .HasMaxLength(255);
 
                 entity.Property(e => e.Value).IsRequired();
             });
@@ -51,12 +52,12 @@ namespace DAL.Models
             modelBuilder.Entity<Error>(entity =>
             {
                 entity.HasIndex(e => e.Key)
-                    .HasName("UQ__Error__C41E0289AE0A095E")
+                    .HasName("UQ__Error__C41E02895A89DA26")
                     .IsUnique();
 
                 entity.Property(e => e.Key)
                     .IsRequired()
-                    .HasMaxLength(200);
+                    .HasMaxLength(255);
 
                 entity.Property(e => e.Translation).IsRequired();
             });
@@ -64,7 +65,7 @@ namespace DAL.Models
             modelBuilder.Entity<Permission>(entity =>
             {
                 entity.HasIndex(e => e.Name)
-                    .HasName("UQ__Permissi__737584F6B7901C9C")
+                    .HasName("UQ__Permissi__737584F666307F36")
                     .IsUnique();
 
                 entity.Property(e => e.Action)
@@ -75,18 +76,18 @@ namespace DAL.Models
 
                 entity.Property(e => e.Name)
                     .IsRequired()
-                    .HasMaxLength(200);
+                    .HasMaxLength(255);
             });
 
             modelBuilder.Entity<Role>(entity =>
             {
                 entity.HasIndex(e => e.Name)
-                    .HasName("UQ__Role__737584F6CE33B6A5")
+                    .HasName("UQ__Role__737584F6407800BE")
                     .IsUnique();
 
                 entity.Property(e => e.Name)
                     .IsRequired()
-                    .HasMaxLength(100);
+                    .HasMaxLength(255);
             });
 
             modelBuilder.Entity<RolePermission>(entity =>
@@ -94,22 +95,22 @@ namespace DAL.Models
                 entity.HasOne(d => d.Permission)
                     .WithMany(p => p.RolePermission)
                     .HasForeignKey(d => d.PermissionId)
-                    .HasConstraintName("FK__RolePermi__Permi__3E52440B");
+                    .HasConstraintName("FK__RolePermi__Permi__5070F446");
 
                 entity.HasOne(d => d.Role)
                     .WithMany(p => p.RolePermission)
                     .HasForeignKey(d => d.RoleId)
-                    .HasConstraintName("FK__RolePermi__RoleI__3D5E1FD2");
+                    .HasConstraintName("FK__RolePermi__RoleI__4F7CD00D");
             });
 
             modelBuilder.Entity<User>(entity =>
             {
                 entity.HasIndex(e => e.Email)
-                    .HasName("UQ__User__A9D1053489CD6CA9")
+                    .HasName("UQ__User__A9D10534CC037F66")
                     .IsUnique();
 
                 entity.HasIndex(e => e.LoginName)
-                    .HasName("UQ__User__DB8464FFC16E4399")
+                    .HasName("UQ__User__DB8464FF18818762")
                     .IsUnique();
 
                 entity.Property(e => e.BirthDate).HasColumnType("date");
@@ -118,33 +119,33 @@ namespace DAL.Models
 
                 entity.Property(e => e.Email)
                     .IsRequired()
-                    .HasMaxLength(50);
+                    .HasMaxLength(255);
 
                 entity.Property(e => e.FirstName)
                     .IsRequired()
-                    .HasMaxLength(1);
+                    .HasMaxLength(255);
 
                 entity.Property(e => e.LastName)
                     .IsRequired()
-                    .HasMaxLength(1);
+                    .HasMaxLength(255);
 
                 entity.Property(e => e.LastUpdateDate).HasColumnType("date");
 
                 entity.Property(e => e.LoginName)
                     .IsRequired()
-                    .HasMaxLength(50)
+                    .HasMaxLength(255)
                     .IsUnicode(false);
 
                 entity.Property(e => e.Password)
                     .IsRequired()
-                    .HasMaxLength(1)
+                    .HasMaxLength(1000)
                     .IsUnicode(false);
 
                 entity.HasOne(d => d.Role)
                     .WithMany(p => p.User)
                     .HasForeignKey(d => d.RoleId)
                     .OnDelete(DeleteBehavior.Cascade)
-                    .HasConstraintName("FK__User__RoleId__45F365D3");
+                    .HasConstraintName("FK__User__RoleId__5812160E");
             });
 
             modelBuilder.Entity<UserSession>(entity =>
@@ -155,13 +156,13 @@ namespace DAL.Models
 
                 entity.Property(e => e.Token)
                     .IsRequired()
-                    .HasMaxLength(1);
+                    .HasMaxLength(255);
 
                 entity.HasOne(d => d.User)
                     .WithMany(p => p.UserSession)
                     .HasForeignKey(d => d.UserId)
                     .OnDelete(DeleteBehavior.Cascade)
-                    .HasConstraintName("FK__UserSessi__UserI__48CFD27E");
+                    .HasConstraintName("FK__UserSessi__UserI__5AEE82B9");
             });
         }
     }

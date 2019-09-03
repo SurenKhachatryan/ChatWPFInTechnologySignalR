@@ -9,5 +9,6 @@
         public const int UserIsBlocked = 5;
         public const int UserIsDeleted = 5;
         public const int UserHasNotBeenVerified = 6;
+        public const int IncorrectPasswordOrUsername = 7;
     }
 }

@@ -1,5 +1,6 @@
 ﻿using BLL.Constatns;
 using BLL.Core;
+using BLL.DomainModels;
 using BLL.Extensions;
 using DAL.Models;
 using Microsoft.EntityFrameworkCore;
@@ -34,9 +35,9 @@ namespace BLL.Services.UserServices
                 throw new AppException(ErrorConstants.UserWithThatEmailAlreadyExists);
             }
 
-            //TODO AppException
+            //TODO AppSettings
 
-            var newPassword = PasswordExtension.CreatePasswordHash(user.Password, "Hello World");
+            var HashPassword = PasswordExtension.CreatePasswordHash(user.Password, "Hello World");
 
             var date = DateTime.UtcNow;
 
@@ -52,7 +53,7 @@ namespace BLL.Services.UserServices
                 IsEmailVerified = false,
                 LoginName = user.LoginName,
                 LastName = user.LastName,
-                Password = newPassword
+                Password = HashPassword
             });
 
             await _db.SaveChangesAsync();
@@ -61,10 +62,18 @@ namespace BLL.Services.UserServices
         }
 
 
-        public async Task<UserSession> Login(User user)
+        public async Task<UserSession> Login(UserLoginModel user)
         {
-            var dbUser = await _db.User.FirstOrDefaultAsync(x => x.LoginName == user.LoginName ||
-                                                                 x.Email == user.Email);
+            var dbUser = await _db.User.FirstOrDefaultAsync(x => x.LoginName == user.LoginNameOrEmail ||
+                                                                 x.Email == user.LoginNameOrEmail);
+            //TODO AppSettings
+
+            var hashPassword = PasswordExtension.CreatePasswordHash(user.Password, "Hello World");
+
+            if (dbUser == null || hashPassword != dbUser.Password)
+            {
+                throw new AppException(ErrorConstants.IncorrectPasswordOrUsername);
+            }
 
             if (dbUser.IsBlocked.HasValue && dbUser.IsBlocked.Value)
             {
@@ -90,8 +99,11 @@ namespace BLL.Services.UserServices
                 CreationDate = date,
                 ModificationDate = date,
                 Token = token,
-                UserId = dbUser.Id
+                UserId = dbUser.Id,
+                User = dbUser
             });
+
+            await _db.SaveChangesAsync();
 
             return newSession.Entity;
         }
@@ -116,6 +128,7 @@ namespace BLL.Services.UserServices
 
             return userSessions;
         }
+
 
         public async Task UpdateUserSessionDate(string token)
         {

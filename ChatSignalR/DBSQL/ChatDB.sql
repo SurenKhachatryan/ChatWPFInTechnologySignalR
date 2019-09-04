@@ -43,9 +43,9 @@ Email nvarchar(255) not null Unique,
 IsEmailVerified bit ,
 IsDeleted bit,
 IsBlocked bit,
-LastUpdateDate Date Not null,
-CreationDate Date Not null,
-BirthDate Date not null,
+LastUpdateDate DATETIME2 Not null,
+CreationDate DATETIME2 Not null,
+BirthDate DATETIME2 not null,
 RoleId int references [Role](Id) on Delete Cascade null
 );
 
@@ -53,8 +53,8 @@ Create Table UserSession
 (
 Id int primary key Identity,
 Token nvarchar(255) Not Null,
-CreationDate Date Not Null,
-ModificationDate Date Not Null,
+CreationDate DATETIME2 Not Null,
+ModificationDate DATETIME2 Not Null,
 UserId int references [User](Id) on Delete Cascade
 );
 

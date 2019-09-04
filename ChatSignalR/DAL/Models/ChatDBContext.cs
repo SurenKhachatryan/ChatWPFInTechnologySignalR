@@ -28,7 +28,7 @@ namespace DAL.Models
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseSqlServer("Data Source=DESKTOP-2F3RP54;Initial Catalog=ChatDB;User ID=Suren;Password=************");
+                optionsBuilder.UseSqlServer("Data Source=Server;Initial Catalog=ChatDB;User ID=Suren;Password=*************");
             }
         }
 
@@ -39,7 +39,7 @@ namespace DAL.Models
             modelBuilder.Entity<AppSettings>(entity =>
             {
                 entity.HasIndex(e => e.Name)
-                    .HasName("UQ__AppSetti__737584F63F36B155")
+                    .HasName("UQ__AppSetti__737584F630F52527")
                     .IsUnique();
 
                 entity.Property(e => e.Name)
@@ -52,7 +52,7 @@ namespace DAL.Models
             modelBuilder.Entity<Error>(entity =>
             {
                 entity.HasIndex(e => e.Key)
-                    .HasName("UQ__Error__C41E02895A89DA26")
+                    .HasName("UQ__Error__C41E0289EFAD8651")
                     .IsUnique();
 
                 entity.Property(e => e.Key)
@@ -65,7 +65,7 @@ namespace DAL.Models
             modelBuilder.Entity<Permission>(entity =>
             {
                 entity.HasIndex(e => e.Name)
-                    .HasName("UQ__Permissi__737584F666307F36")
+                    .HasName("UQ__Permissi__737584F600863683")
                     .IsUnique();
 
                 entity.Property(e => e.Action)
@@ -82,7 +82,7 @@ namespace DAL.Models
             modelBuilder.Entity<Role>(entity =>
             {
                 entity.HasIndex(e => e.Name)
-                    .HasName("UQ__Role__737584F6407800BE")
+                    .HasName("UQ__Role__737584F6CF99A2D4")
                     .IsUnique();
 
                 entity.Property(e => e.Name)
@@ -95,27 +95,23 @@ namespace DAL.Models
                 entity.HasOne(d => d.Permission)
                     .WithMany(p => p.RolePermission)
                     .HasForeignKey(d => d.PermissionId)
-                    .HasConstraintName("FK__RolePermi__Permi__5070F446");
+                    .HasConstraintName("FK__RolePermi__Permi__3E52440B");
 
                 entity.HasOne(d => d.Role)
                     .WithMany(p => p.RolePermission)
                     .HasForeignKey(d => d.RoleId)
-                    .HasConstraintName("FK__RolePermi__RoleI__4F7CD00D");
+                    .HasConstraintName("FK__RolePermi__RoleI__3D5E1FD2");
             });
 
             modelBuilder.Entity<User>(entity =>
             {
                 entity.HasIndex(e => e.Email)
-                    .HasName("UQ__User__A9D10534CC037F66")
+                    .HasName("UQ__User__A9D10534545D6026")
                     .IsUnique();
 
                 entity.HasIndex(e => e.LoginName)
-                    .HasName("UQ__User__DB8464FF18818762")
+                    .HasName("UQ__User__DB8464FFEA73343B")
                     .IsUnique();
-
-                entity.Property(e => e.BirthDate).HasColumnType("date");
-
-                entity.Property(e => e.CreationDate).HasColumnType("date");
 
                 entity.Property(e => e.Email)
                     .IsRequired()
@@ -128,8 +124,6 @@ namespace DAL.Models
                 entity.Property(e => e.LastName)
                     .IsRequired()
                     .HasMaxLength(255);
-
-                entity.Property(e => e.LastUpdateDate).HasColumnType("date");
 
                 entity.Property(e => e.LoginName)
                     .IsRequired()
@@ -145,15 +139,11 @@ namespace DAL.Models
                     .WithMany(p => p.User)
                     .HasForeignKey(d => d.RoleId)
                     .OnDelete(DeleteBehavior.Cascade)
-                    .HasConstraintName("FK__User__RoleId__5812160E");
+                    .HasConstraintName("FK__User__RoleId__45F365D3");
             });
 
             modelBuilder.Entity<UserSession>(entity =>
             {
-                entity.Property(e => e.CreationDate).HasColumnType("date");
-
-                entity.Property(e => e.ModificationDate).HasColumnType("date");
-
                 entity.Property(e => e.Token)
                     .IsRequired()
                     .HasMaxLength(255);
@@ -162,7 +152,7 @@ namespace DAL.Models
                     .WithMany(p => p.UserSession)
                     .HasForeignKey(d => d.UserId)
                     .OnDelete(DeleteBehavior.Cascade)
-                    .HasConstraintName("FK__UserSessi__UserI__5AEE82B9");
+                    .HasConstraintName("FK__UserSessi__UserI__48CFD27E");
             });
         }
     }

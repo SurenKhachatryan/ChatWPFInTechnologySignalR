@@ -1,6 +1,7 @@
 ﻿using BLL.DomainModels;
 using BLL.Mappers.UserMappers;
 using BLL.Services.UserServices;
+using ChatWebApi.AttributeFilters;
 using DTO.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
@@ -46,6 +47,7 @@ namespace ChatWebApi.Controllers
 
 
         [HttpPost]
+        [UserAuthorization]
         [Route("logOut")]
         public async Task logOut()
         {

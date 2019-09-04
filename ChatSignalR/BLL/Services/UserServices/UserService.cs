@@ -143,5 +143,19 @@ namespace BLL.Services.UserServices
                 await _db.SaveChangesAsync();
             }
         }
+
+        public async Task<User> GetUserByToken(string token)
+        {
+            var user = await _db.User
+                                .Include(x => x.UserSession)
+                                .FirstOrDefaultAsync(x => x.UserSession.Any(y => y.Token == token));
+
+            if (!string.IsNullOrEmpty(token) && user != null)
+            {
+                //TODO Remove Users Expired Times
+            }
+
+            return user;
+        }
     }
 }

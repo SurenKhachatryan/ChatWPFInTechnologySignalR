@@ -28,7 +28,7 @@ namespace DAL.Models
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseSqlServer("Data Source=Server;Initial Catalog=ChatDB;User ID=Suren;Password=*************");
+                optionsBuilder.UseSqlServer("Data Source=Server;Initial Catalog=ChatDB;User ID=Suren;Password=pilonium9194");
             }
         }
 
@@ -39,7 +39,7 @@ namespace DAL.Models
             modelBuilder.Entity<AppSettings>(entity =>
             {
                 entity.HasIndex(e => e.Name)
-                    .HasName("UQ__AppSetti__737584F630F52527")
+                    .HasName("UQ__AppSetti__737584F68982D226")
                     .IsUnique();
 
                 entity.Property(e => e.Name)
@@ -52,8 +52,10 @@ namespace DAL.Models
             modelBuilder.Entity<Error>(entity =>
             {
                 entity.HasIndex(e => e.Key)
-                    .HasName("UQ__Error__C41E0289EFAD8651")
+                    .HasName("UQ__Error__C41E0289C7DEC76A")
                     .IsUnique();
+
+                entity.Property(e => e.Id).ValueGeneratedNever();
 
                 entity.Property(e => e.Key)
                     .IsRequired()
@@ -65,7 +67,7 @@ namespace DAL.Models
             modelBuilder.Entity<Permission>(entity =>
             {
                 entity.HasIndex(e => e.Name)
-                    .HasName("UQ__Permissi__737584F600863683")
+                    .HasName("UQ__Permissi__737584F67C5D42E0")
                     .IsUnique();
 
                 entity.Property(e => e.Action)
@@ -82,7 +84,7 @@ namespace DAL.Models
             modelBuilder.Entity<Role>(entity =>
             {
                 entity.HasIndex(e => e.Name)
-                    .HasName("UQ__Role__737584F6CF99A2D4")
+                    .HasName("UQ__Role__737584F64A6E181D")
                     .IsUnique();
 
                 entity.Property(e => e.Name)
@@ -106,11 +108,11 @@ namespace DAL.Models
             modelBuilder.Entity<User>(entity =>
             {
                 entity.HasIndex(e => e.Email)
-                    .HasName("UQ__User__A9D10534545D6026")
+                    .HasName("UQ__User__A9D10534E2502205")
                     .IsUnique();
 
                 entity.HasIndex(e => e.LoginName)
-                    .HasName("UQ__User__DB8464FFEA73343B")
+                    .HasName("UQ__User__DB8464FFEDCC4562")
                     .IsUnique();
 
                 entity.Property(e => e.Email)

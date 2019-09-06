@@ -1,37 +1,36 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using BLL.Core;
+using BLL.Helpers;
+using BLL.Services.FileManagmentServices;
+using BLL.Services.UserServices;
 using ChatWebApi.Hubs;
+using DAL.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using BLL.Services;
-using BLL.Services.FileManagmentServices;
-using BLL.Core;
-using BLL.Services.UserServices;
-using DAL.Models;
 
 namespace ChatWebApi
 {
     public class Startup
     {
-        public IConfiguration Configuration { get; }
+        private readonly IConfiguration _configuration;
+
+        public Startup(IConfiguration configuration)
+        {
+            _configuration = configuration;
+        }
+
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc();
+            AppConfigSettings.CacheUrl = _configuration.GetSection("CacheSettings:CacheUrl").Value;
 
-            services.AddTransient<IFileServices, FileServices>();
-            services.AddTransient<IFileManagmentServices, FileManagmentServices>();
-            services.AddSingleton<UserIdentity>();
-            services.AddTransient<IUserService, UserService>();
-            services.AddDbContext<ChatDBContext>();
+            services.AddServices();
 
             services.AddSignalR();
+            services.AddMvc();
         }
+
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
@@ -42,6 +41,19 @@ namespace ChatWebApi
             app.UseMvc();
         }
 
+    }
 
+    static class ServiceExtention
+    {
+        public static void AddServices(this IServiceCollection services)
+        {
+            services.AddScoped<UserIdentity>();
+            services.AddScoped<HttpHelpers>();
+
+            services.AddTransient<IFileServices, FileServices>();
+            services.AddTransient<IFileManagmentServices, FileManagmentServices>();
+            services.AddTransient<IUserService, UserService>();
+            services.AddDbContext<ChatDBContext>();
+        }
     }
 }

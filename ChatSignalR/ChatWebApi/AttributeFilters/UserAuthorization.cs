@@ -22,6 +22,11 @@ namespace ChatWebApi.AttributeFilters
 
             var user = userService.GetUserByToken(token).Result;
 
+            if (user == null)
+            {
+                throw new AppException(ErrorConstants.UnAuthorized);
+            }
+
             if (user.IsBlocked.HasValue && user.IsBlocked.Value)
             {
                 throw new AppException(ErrorConstants.UserIsBlocked);

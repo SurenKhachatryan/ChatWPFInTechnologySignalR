@@ -4,13 +4,13 @@
     {
         public static class Controllers
         {
-            public const string Error = "api/errors";
+            public const string Error = "api/error/";
         }
 
         public static class Actions
         {
             public const string GetErrors = "geterrors";
-            public const string GetErrorById = "geterrorbyid";
+            public const string GetErrorById = "geterrorbyid?id=";
         }
     }
 }

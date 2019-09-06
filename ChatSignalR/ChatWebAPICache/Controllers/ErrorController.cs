@@ -23,7 +23,7 @@ namespace ChatWebAPICache.Controllers
             return Cache.Errors.Select(x => x.Value).ToList();
         }
 
-        [HttpPost]
+        [HttpGet]
         [Route("GetErrorById")]
         public async Task<Error> GetErrorByIdAsync(int id)
         {

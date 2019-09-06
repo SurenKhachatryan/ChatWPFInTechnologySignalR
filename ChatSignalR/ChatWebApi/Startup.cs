@@ -2,12 +2,15 @@
 using BLL.Helpers;
 using BLL.Services.FileManagmentServices;
 using BLL.Services.UserServices;
+using ChatWebApi.AttributeFilters;
 using ChatWebApi.Hubs;
 using DAL.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 
 namespace ChatWebApi
 {
@@ -28,7 +31,16 @@ namespace ChatWebApi
             services.AddServices();
 
             services.AddSignalR();
-            services.AddMvc();
+
+            services.AddMvc(options =>
+            {
+                options.Filters.Add(typeof(AppExceptionFilter));
+            }).AddJsonOptions(options =>
+            {
+                options.SerializerSettings.ContractResolver = new DefaultContractResolver();
+                options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+            });
+
         }
 
 

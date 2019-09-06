@@ -66,13 +66,13 @@ Id int identity Primary Key,
 );
 
 Insert into Error Values 
-(1 , 'GeneralError' , '{"ru":"Общая ошибка","en":"General Error"}'),
-(2 , 'UserAlreadyExists' , '{"ru":"Пользователь уже существует","en":"User Already Exists"}'),
-(3 , 'UserNotFound' , '{"ru":"Пользователь не найден","en":"User Not Found"}'),
-(4 , 'UserWithThatEmailAlreadyExists' , '{"ru":"Пользователь с таким электронной почты уже существует","en":"User With That Email Already Exists"}'),
-(5 , 'UserIsBlocked' , '{"ru":"Пользователь заблокирован","en":"User Is Blocked"}'),
-(6 , 'UserIsDeleted' , '{"ru":"Пользователь удален","en":"User Is Deleted"}'),
-(7 , 'UserHasNotBeenVerified' , '{"ru":"Пользователь не подтвердил e-mail","en":"User Has Not Been Verified"}'),
-(8 , 'IncorrectPasswordOrUsername' , '{"ru":"Неверный пароль или имя пользователя","en":"Incorrect Password Or Username"}'),
-(9 , 'UnAuthorized' , '{"ru":"Неразрешенный","en":"UnAuthorized"}'),
-(10 , 'SessionExpired' , '{"ru":"Сессия истекла","en":"Session Expired"}')
+(1 , 'GeneralError' , N'{"ru":"Общая ошибка","en":"General Error"}'),
+(2 , 'UserAlreadyExists' , N'{"ru":"Пользователь уже существует","en":"User Already Exists"}'),
+(3 , 'UserNotFound' , N'{"ru":"Пользователь не найден","en":"User Not Found"}'),
+(4 , 'UserWithThatEmailAlreadyExists' , N'{"ru":"Пользователь с таким электронной почты уже существует","en":"User With That Email Already Exists"}'),
+(5 , 'UserIsBlocked' , N'{"ru":"Пользователь заблокирован","en":"User Is Blocked"}'),
+(6 , 'UserIsDeleted' , N'{"ru":"Пользователь удален","en":"User Is Deleted"}'),
+(7 , 'UserHasNotBeenVerified' , N'{"ru":"Пользователь не подтвердил e-mail","en":"User Has Not Been Verified"}'),
+(8 , 'IncorrectPasswordOrUsername' , N'{"ru":"Неверный пароль или имя пользователя","en":"Incorrect Password Or Username"}'),
+(9 , 'UnAuthorized' , N'{"ru":"Неразрешенный","en":"UnAuthorized"}'),
+(10 , 'SessionExpired' , N'{"ru":"Сессия истекла","en":"Session Expired"}')

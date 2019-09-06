@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace BLL.Core
+﻿namespace BLL.Core
 {
     public class ErrorModel
     {

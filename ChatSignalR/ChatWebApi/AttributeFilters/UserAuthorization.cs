@@ -45,7 +45,9 @@ namespace ChatWebApi.AttributeFilters
             //TODO AppSettings Get Expired Time from DB
 
             var userSession = user.UserSession.FirstOrDefault(x => x.Token == token);
-            var time = userSession.ModificationDate.AddMinutes(1);
+
+            var time = userSession.ModificationDate.AddMinutes(150);
+
             if (time > DateTime.UtcNow)
             {
                 throw new AppException(ErrorConstants.SessionExpired);

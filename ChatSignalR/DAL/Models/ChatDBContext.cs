@@ -28,7 +28,7 @@ namespace DAL.Models
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseSqlServer("Data Source=Server;Initial Catalog=ChatDB;User ID=Suren;Password=pilonium9194");
+                optionsBuilder.UseSqlServer("Data Source=Server;Initial Catalog=ChatDB;User ID=Suren;Password=************");
             }
         }
 
@@ -52,7 +52,7 @@ namespace DAL.Models
             modelBuilder.Entity<Error>(entity =>
             {
                 entity.HasIndex(e => e.Key)
-                    .HasName("UQ__Error__C41E0289C7DEC76A")
+                    .HasName("UQ__Error__C41E0289127CCABF")
                     .IsUnique();
 
                 entity.Property(e => e.Id).ValueGeneratedNever();

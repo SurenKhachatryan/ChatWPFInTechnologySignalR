@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using DAL.Models;
 
-namespace BLL.Services.ClientServices
+namespace BLL.Services.CacheServices
 {
     public interface ICacheService
     {

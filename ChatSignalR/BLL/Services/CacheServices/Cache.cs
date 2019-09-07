@@ -1,7 +1,7 @@
 ﻿using DAL.Models;
 using System.Collections.Concurrent;
 
-namespace BLL.Services.ClientServices
+namespace BLL.Services.CacheServices
 {
     public static class Cache
     {

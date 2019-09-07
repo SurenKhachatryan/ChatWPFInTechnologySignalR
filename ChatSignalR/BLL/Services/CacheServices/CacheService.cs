@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Collections.Concurrent;
 using System.Threading.Tasks;
 
-namespace BLL.Services.ClientServices
+namespace BLL.Services.CacheServices
 {
     public class CacheService : ICacheService
     {

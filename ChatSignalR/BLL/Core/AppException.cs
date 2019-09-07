@@ -1,52 +1,61 @@
 ﻿using BLL.Constatns;
+using BLL.Helpers;
 using DAL.Models;
-using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net.Http;
 
 namespace BLL.Core
 {
     public class AppException : Exception
     {
         private readonly string _cachUrl = AppConfigSettings.CacheUrl;
-        public List<ErrorModel> Errors { get; private set; } = new List<ErrorModel>();
+        private readonly static HttpHelpers _httpHelpers;
 
-        //TODO HttpHelper
-       
-        public AppException(int code)
-        {
-            CreatErrorAsync(code);
-        }
+        private List<ErrorModel> errors = new List<ErrorModel>();
 
-        public AppException(List<int> codes)
-        {
-            CreatError(codes);
-        }
+        public List<ErrorModel> Errors { get { return errors; } }
 
-        public AppException(int code, string description)
-        {
-            CreatError(code, description);
-        }
 
-        public AppException(List<ErrorModel> errors)
+
+        static AppException()
         {
-            CreatError(errors);
+            _httpHelpers = Services.HttpHelpers;
         }
 
         public AppException()
         {
-
         }
-        
 
-        private void CreatErrorAsync(int code)
+        public AppException(int code)
         {
+            CreatError(code);
+        }
 
-            var error = Get<Error>(_cachUrl + CacheConstants.Controllers.Error + CacheConstants.Actions.GetErrorById + code);
 
-            Errors.Add(new ErrorModel()
+        public AppException(List<int> codes)
+        {
+            CreateError(codes);
+        }
+
+
+        public AppException(int code, string description)
+        {
+            CreateError(code, description);
+        }
+
+
+        public AppException(List<ErrorModel> errors)
+        {
+            CreateError(errors);
+        }
+
+
+        private void CreatError(int code)
+        {
+            var error = _httpHelpers.GetAsync<Error>(_cachUrl + CacheConstants.Controllers.Error + CacheConstants.Actions.GetErrorById + code).Result;
+
+            errors.Add(new ErrorModel()
             {
                 Code = code,
                 Description = error.Translation
@@ -54,24 +63,24 @@ namespace BLL.Core
         }
 
 
-        private void CreatError(List<int> codes)
+        private void CreateError(List<int> codes)
         {
-            var errors = Get<List<Error>>(_cachUrl + CacheConstants.Controllers.Error + CacheConstants.Actions.GetErrors);
+            var dbErrors = _httpHelpers.GetAsync<List<Error>>(_cachUrl + CacheConstants.Controllers.Error + CacheConstants.Actions.GetErrors).Result;
 
             foreach (var code in codes)
             {
-                Errors.Add(new ErrorModel()
+                errors.Add(new ErrorModel()
                 {
                     Code = code,
-                    Description = errors.FirstOrDefault(x => x.Id == code)?.Translation
+                    Description = dbErrors.FirstOrDefault(x => x.Id == code)?.Translation
                 });
             }
         }
 
 
-        private void CreatError(int code, string description)
+        private void CreateError(int code, string description)
         {
-            Errors.Add(new ErrorModel()
+            errors.Add(new ErrorModel()
             {
                 Code = code,
                 Description = description
@@ -79,20 +88,9 @@ namespace BLL.Core
         }
 
 
-        private void CreatError(List<ErrorModel> errors)
+        private void CreateError(List<ErrorModel> errors)
         {
-            Errors.AddRange(errors);
-        }
-
-
-        private TR Get<TR>(string url)
-        {
-            using (var client = new HttpClient())
-            {
-                var responce = client.GetStringAsync(url).Result;
-
-                return JsonConvert.DeserializeObject<TR>(responce);
-            }
+            errors.AddRange(errors);
         }
     }
 }

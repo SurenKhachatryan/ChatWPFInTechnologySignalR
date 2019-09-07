@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace BLL.Core
 {
-    class PagedModel<T>
+    public class PagedModel<T>
     {
         public List<T> Entities { get; set; }
         public int Count { get; set; }

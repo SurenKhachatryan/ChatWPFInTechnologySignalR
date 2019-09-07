@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace BLL.Core
 {
-    class Response<T>
+    public class Response<T>
     {
         public T Data { get; set; }
         public bool HasError { get; set; }
